@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="Keywords" content="опубликовать статью, публикация статей, публикация статьи, публикация научных статей,
+     публикация научной статьи, публикация РИНЦ, публикация в журнале, публикация научной статьи в журнале, публикация срочно,
+     быстрая публикация, статья РИНЦ, статья elibrary, статья елайбрари">
+    <title>Журнал "Научная гипотеза"</title>
+    <link rel='stylesheet' href='/static/css/index.css'>
+    <link rel='stylesheet' href='/static/css/payment.css'>
+    <link rel="icon" href="/static/images/index/icon.png" type="image/png">
+      <!— Yandex.Metrika counter —>
+<script type="text/javascript" >
+(function (d, w, c) {
+(w[c] = w[c] || []).push(function() {
+try {
+w.yaCounter46449825 = new Ya.Metrika({
+id:46449825,
+clickmap:true,
+trackLinks:true,
+accurateTrackBounce:true,
+webvisor:true
+});
+} catch(e) { }
+});
+
+var n = d.getElementsByTagName("script")[0],
+s = d.createElement("script"),
+f = function () { n.parentNode.insertBefore(s, n); };
+s.type = "text/javascript";
+s.async = true;
+s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+if (w.opera == "[object Opera]") {
+d.addEventListener("DOMContentLoaded", f, false);
+} else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/46449825" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!— /Yandex.Metrika counter —>
+  </head>
+  <body>
+
+    <header>
+      <a href='/'><img src='/static/images/index/logo.png'></a>
+    <nav>
+      <ul>
+        <li><a href='/'>О ЖУРНАЛЕ</a></li>
+        <li><a href='/archive/'>АРХИВ НОМЕРОВ</a></li>
+        <li><a href='/demands/'>ТРЕБОВАНИЯ К ПУБЛИКАЦИИ</a></li>
+        <li><a href='/payment/'>ОПЛАТА</a></li>
+      </ul>
+    </nav>
+    <div class='contacts'>
+    <a href='mailto:info@gipoteza-journal.ru'>info@gipoteza-journal.ru</a>
+    <a href="https://vk.com/gipoteza_journal" target="_blank"><img src="/static/images/index/vk.svg"></a>
+    </div>
+    </header>
+
+    <main>
+      <section class='payment'>
+        <h2>Оплата публикаций</h2>
+        <p>{{ payment.public|safe }}</p>
+     <div class='strip'></div>
+     <div class='pay'>
+{{ payment.yandex_widget_1|safe }}
+     </div>
+     <h2>Оплата оформления статьи</h2>
+     <p>{{ payment.editor|safe }}</p>
+  <div class='strip'></div>
+  <div class='pay'>
+{{ payment.yandex_widget_2|safe }}
+  </div>
+  <script>
+  var iframes = document.querySelectorAll(".widget-shop");
+  console.log(iframes);
+  </script>
+      </section>
+
+  <section class='feedback'>
+    <h2>Ждем Ваших будущих публикаций</h2>
+    <p>Оставьте свой вопрос и мы ответим в ближайшее время!</p>
+    <form onsubmit="return checkValue()" action='/feedback/' method='POST'>
+        {% csrf_token %}
+      <input type='text' name="name" placeholder='Имя'>
+      <input type='text' name="comment" placeholder='Вопрос'>
+      <textarea rows='2' name="e-mail" placeholder='Ваш e-mail для ответа'></textarea>
+      <div class='error'><p>Не все поля заполнены</p></div>
+      <button id='feedbackButton' type="submit">Отправить вопрос</button>
+    </form>
+  </section>
+  <script>
+  var feedbackButton = document.getElementById("feedbackButton");
+  var formFeedback = document.querySelector(".feedback form");
+  var inputs = document.querySelectorAll(".feedback input");
+  var textarea = document.querySelector(".feedback textarea");
+  var error = document.querySelector(".error");
+
+      function checkValue() {
+        if (textarea.value=="" || inputs[0].value=="" || inputs[1].value==""){
+          console.log(textarea.value);
+          error.style.display = "flex";
+          return false;
+        };
+      };
+
+      </script>
+
+  <section class='contacts'>
+    <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
+    <p class="p-contacts">E-mail: <a href='mailto:info@gipoteza-journal.ru'>info@gipoteza-journal.ru</a></p>
+    <p class="p-contacts">Группа Вконтакте: <a href='vk.com/gipoteza_journal' target="_blank">vk.com/gipoteza_journal</a></p>
+    <a href='vk.com/gipoteza_journal' class='vk' target="_blank"></a>
+    <div class='strip'></div>
+    <p>{{ homepage.bottom|safe }}</p>
+  </section>
+
+
+
+    </main>
+
+<script src="/static/blockform.js"></script>
+    <footer>
+      <a href="https://vk.com/polina9369" target="_blank"><p>Made by pinpol 2017</p></a>
+    </footer>
+
+
+  </body>
+</html>

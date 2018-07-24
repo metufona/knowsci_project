@@ -1,0 +1,101 @@
+<html lang='ru'>
+<head>
+  <title>Наука и время</title>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Keywords" content="опубликовать статью, публикация статей, публикация статьи, публикация научных статей,
+     публикация научной статьи, публикация РИНЦ, публикация в журнале, публикация научной статьи в журнале, публикация срочно,
+     быстрая публикация, статья РИНЦ, статья elibrary, статья елайбрари">
+  <meta name="description" content="Приглашаем к публикации статей в международном журнале! Быстро! Недорого!">
+  <link rel='stylesheet' href='/static/science.css'>
+  <link rel="icon" href="/static/images/icon.png" type="image/png">
+  <style>
+  .img{
+    background-image: url(/static/images/header.jpg);
+  }
+  </style>
+</head>
+<body>
+  <header class="inside-header">
+      <!-- Бургер меню -->
+      <button class="hamburger hamburger--slider" type="button">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    <div class="lower-menu flex">
+      <nav>
+        <ul class="nav flex">
+            <li class="logo"><a href="/" class="flex">
+              <p>наука</p>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 516.303 516.303" xml:space="preserve" width="auto" height="44px">
+              		<path d="M258.151,273.651c-3.207,0-6.414-1.069-9.621-3.207c-4.276-3.207-117.584-88.723-117.584-198.825    c0-8.552,7.483-16.034,16.034-16.034h222.342c8.552,0,16.034,7.483,16.034,16.034c0,110.102-113.309,195.618-117.584,199.894    C264.565,272.582,261.358,273.651,258.151,273.651z M164.084,87.654c8.552,69.482,70.551,129.343,94.068,149.653    c24.586-20.31,85.516-80.171,94.068-149.653C352.219,87.654,164.084,87.654,164.084,87.654z" fill="#FFFFFF"/>
+              		<path d="M369.322,32.068H146.981c-8.552,0-16.034-7.483-16.034-16.034S138.429,0,146.981,0h222.342    c8.552,0,16.034,7.483,16.034,16.034S377.874,32.068,369.322,32.068z" fill="#FFFFFF"/>
+              		<path d="M369.322,460.717H146.981c-8.552,0-16.034-7.483-16.034-16.034    c0-110.102,113.309-195.618,117.584-199.894c5.345-4.276,13.896-4.276,19.241,0c4.276,3.207,117.584,89.792,117.584,199.894    C385.356,453.235,377.874,460.717,369.322,460.717z M164.084,428.649h189.204c-8.552-69.482-70.551-129.343-94.068-149.653    C233.566,299.306,172.635,359.167,164.084,428.649z" fill="#FFFFFF"/>
+              		<path d="M369.322,516.303H146.981c-8.552,0-16.034-7.483-16.034-16.034s7.483-16.034,16.034-16.034h222.342    c8.552,0,16.034,7.483,16.034,16.034S377.874,516.303,369.322,516.303z" fill="#FFFFFF"/>
+              		<path d="M258.151,308.926c0,0-60.93,44.896-60.93,101.55h120.791    C319.081,354.891,258.151,308.926,258.151,308.926z" fill="#FFFFFF"/>
+              		<path d="M258.151,214.859c0,0,29.931-22.448,29.931-50.241h-59.861    C228.221,192.411,258.151,214.859,258.151,214.859z" fill="#FFFFFF"/>
+              </svg>
+                <p>время</p>
+              </a></li>
+          <li><a href="/#about-journal" data-hover="О журнале">О журнале</a></li>
+          <li><a href="/archive/{{ last_number_pk|safe }}/" data-hover="Текущий номер">Текущий номер</a></li>
+          <li><a href="/archive/" data-hover="Архив номеров">Архив номеров</a></li>
+          <li><a href="/demands/" data-hover="Порядок публикации">Порядок публикации</a></li>
+          <li><a href="/payment/" data-hover="Оплата">Оплата</a></li>
+        </ul>
+      </nav>
+  </header>
+  <main class="current">
+  <ul class="flex border-bottom right upper-menu container">
+    <li><a href="mailto:info@nauka-journal.ru ">info@nauka-journal.ru </a></li>
+    <li class="vk"><a href="https://m.vk.com/club164213221"></a></li>
+  </ul>
+    <h2 class="right">Научный журнал номер {{ magazine.number }}, {{ magazine.get_nice_mouth }} {{ magazine.year }}</h2>
+    <section class="right flex">
+      <div class="img" style="background-image: url({{ magazine.image.url }})"></div>
+      <div class="flex timing">
+        <div class="timing__block {% if magazine.active_stage == 1 %}actual now{% endif %} {% if magazine.active_stage > 0 %}{% else %}actual{% endif %}">
+          <p>Прием статей:</p>
+          <p>до {{ magazine.priem|date:'d.m.Y'}}</p>
+        </div>
+        <div class="timing__block {% if magazine.active_stage == 2 %} actual now{% endif %} {% if magazine.active_stage > 1 %}{% else %}actual{% endif %}">
+          <p>Размещение журнала в электронном виде:</p>
+          <p>{{ magazine.publish|date:'d.m.Y' }}</p>
+        </div>
+        <div class="timing__block {% if magazine.active_stage == 3 %}actual now{% endif %} {% if magazine.active_stage > 2 %}{% else %}actual{% endif %}">
+          <p>Отправка журнала в Elibrary:</p>
+          <p>{{ magazine.elibrary|date:'d.m.Y' }}</p>
+        </div>
+        <a class="green-button" data-hover="Опубликовать статью" href="/demands/">Опубликовать статью</a>
+          {% if magazine.url %}
+        <a class="download" href="{{ magazine.url }}">Скачать журнал</a>
+          {% endif %}
+      </div>
+    </section>
+    <section class="context right">
+
+      {% for s in scis %}
+          <h2>{{ s.name }}</h2>
+          {% for a in s.arts %}
+            <a href="{{ a.make_short_url }}" class="article flex">
+                <svg class="googlesvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 612 612" xml:space="preserve">
+                        <path d="M587.572,186.881c-32.266-75.225-87.096-129.934-162.956-162.285C386.711,8.427,346.985,0.168,305.497,0.168    c-41.488,0-80.914,8.181-118.784,24.428C111.488,56.861,56.415,111.535,24.092,186.881C7.895,224.629,0,264.176,0,305.664    c0,41.496,7.895,81.371,24.092,119.127c32.323,75.346,87.396,130.348,162.621,162.621c37.87,16.247,77.295,24.42,118.784,24.42    c41.489,0,81.214-8.259,119.12-24.42c75.86-32.352,130.69-87.403,162.956-162.621C603.819,386.914,612,347.16,612,305.664    C612,264.176,603.819,224.757,587.572,186.881z M538.717,440.853c-24.014,41.195-56.922,73.876-98.375,98.039    c-41.196,24.021-86.325,36.135-134.845,36.135c-36.47,0-71.27-7.024-104.399-21.415c-33.123-14.384-61.733-33.294-85.662-57.215    c-23.921-23.928-42.966-52.811-57.214-85.997c-14.198-33.065-21.08-68.258-21.08-104.735c0-48.52,11.921-93.428,35.799-134.509    c23.971-41.231,56.886-73.947,98.04-98.04c41.16-24.092,85.997-36.142,134.517-36.142s93.649,12.121,134.845,36.142    c41.453,24.164,74.283,56.879,98.375,98.04c24.092,41.153,36.142,85.99,36.142,134.509    C574.858,354.185,562.888,399.399,538.717,440.853z" fill="rgba(63, 164, 106, 1)"/>
+                        <path d="M270.026,128.995c-7.603-7.795-19.402-7.367-26.098-0.671c-7.695,7.695-7.274,18.981-0.671,25.763l149.571,153.591    L243.257,457.242c-7.21,7.217-6.689,19.074,0,25.77c3.683,3.677,8.366,5.689,13.72,5.689c5.019,0,9.366-2.021,13.049-5.689    l162.286-161.621c7.23-7.195,6.609-19.324,0-26.098L270.026,128.995z" fill="rgba(63, 164, 106, 1)"/>
+                    </svg>
+                <div class="name-author">
+                  <h4>{{ a.magazine_authors }}</h4>
+                  <p>{{ a.magazine_title }}</p>
+                </div>
+              </a>
+          {% endfor %}
+      {% endfor %}
+    </section>
+    <section class="green right"></section>
+    <section class="made-by right">
+      <a href="https://vk.com/polina9369" target="_blank" rel="noreferrer">Made by pinpol 2018</a>
+    </section>
+  </main>
+  <script src="/static/mobileMenu.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<html lang='ru'>
+<head>
+  <title>Наука и время</title>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/static/science.css'>
+  <link rel="icon" href="/static/images/icon.png" type="image/png">
+  <meta name="Keywords" content="опубликовать статью, публикация статей, публикация статьи, публикация научных статей,
+     публикация научной статьи, публикация РИНЦ, публикация в журнале, публикация научной статьи в журнале, публикация срочно,
+     быстрая публикация, статья РИНЦ, статья elibrary, статья елайбрари">
+  <meta name="description" content="Приглашаем к публикации статей в международном журнале! Быстро! Недорого!">
+  <style>
+  .img{
+    background-image: url(/static/images/header.jpg);
+  }
+  </style>
+</head>
+<body>
+  <header class="inside-header">
+      <!-- Бургер меню -->
+      <button class="hamburger hamburger--slider" type="button">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    <div class="lower-menu flex">
+      <nav>
+        <ul class="nav flex">
+            <li class="logo"><a href="/" class="flex">
+              <p>наука</p>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 516.303 516.303" xml:space="preserve" width="auto" height="44px">
+              		<path d="M258.151,273.651c-3.207,0-6.414-1.069-9.621-3.207c-4.276-3.207-117.584-88.723-117.584-198.825    c0-8.552,7.483-16.034,16.034-16.034h222.342c8.552,0,16.034,7.483,16.034,16.034c0,110.102-113.309,195.618-117.584,199.894    C264.565,272.582,261.358,273.651,258.151,273.651z M164.084,87.654c8.552,69.482,70.551,129.343,94.068,149.653    c24.586-20.31,85.516-80.171,94.068-149.653C352.219,87.654,164.084,87.654,164.084,87.654z" fill="#FFFFFF"/>
+              		<path d="M369.322,32.068H146.981c-8.552,0-16.034-7.483-16.034-16.034S138.429,0,146.981,0h222.342    c8.552,0,16.034,7.483,16.034,16.034S377.874,32.068,369.322,32.068z" fill="#FFFFFF"/>
+              		<path d="M369.322,460.717H146.981c-8.552,0-16.034-7.483-16.034-16.034    c0-110.102,113.309-195.618,117.584-199.894c5.345-4.276,13.896-4.276,19.241,0c4.276,3.207,117.584,89.792,117.584,199.894    C385.356,453.235,377.874,460.717,369.322,460.717z M164.084,428.649h189.204c-8.552-69.482-70.551-129.343-94.068-149.653    C233.566,299.306,172.635,359.167,164.084,428.649z" fill="#FFFFFF"/>
+              		<path d="M369.322,516.303H146.981c-8.552,0-16.034-7.483-16.034-16.034s7.483-16.034,16.034-16.034h222.342    c8.552,0,16.034,7.483,16.034,16.034S377.874,516.303,369.322,516.303z" fill="#FFFFFF"/>
+              		<path d="M258.151,308.926c0,0-60.93,44.896-60.93,101.55h120.791    C319.081,354.891,258.151,308.926,258.151,308.926z" fill="#FFFFFF"/>
+              		<path d="M258.151,214.859c0,0,29.931-22.448,29.931-50.241h-59.861    C228.221,192.411,258.151,214.859,258.151,214.859z" fill="#FFFFFF"/>
+              </svg>
+                <p>время</p>
+              </a></li>
+          <li><a href="/#about-journal" data-hover="О журнале">О журнале</a></li>
+          <li><a href="/archive/{{ last_number_pk|safe }}/" data-hover="Текущий номер">Текущий номер</a></li>
+          <li><a href="/archive/" data-hover="Архив номеров">Архив номеров</a></li>
+          <li><a href="/demands/" data-hover="Порядок публикации">Порядок публикации</a></li>
+          <li><a href="/payment/" data-hover="Оплата">Оплата</a></li>
+        </ul>
+      </nav>
+  </header>
+  <main class="">
+  <ul class="flex border-bottom right upper-menu container">
+    <li><a href="mailto:info@nauka-journal.ru ">info@nauka-journal.ru </a></li>
+    <li class="vk"><a href="https://m.vk.com/club164213221"></a></li>
+  </ul>
+    <section class="right article-content">
+      <h2>{{ article.title.upper }} <br><span class="eng">{{ article.title_eng.upper }}</span></h2>
+      <div class="information">
+        <p><span class="bold">Авторы:</span> {{ article.authors }}</p>
+        <p><span class="bold">Степень:</span> {{ article.grade }}</p>
+        <p><span class="bold">Место учебы/работы:</span> {{ article.workplace }}</p>
+      </div>
+      <div class="annotation">
+        <p class="rus"><span class="bold">Аннотация на русском языке:</span> {{ article.annotation_rus }}</p>
+        <p class="eng"><span class="bold">The summary in English:</span> {{ article.annotation_end }}</p>
+      </div>
+      <div class='keywords'>
+        <p class='rus'><span class='bold'>Ключевые слова:</span> {{ article.keywords_rus }}</p>
+        <p class='eng'><span class='bold'>Key words:</span> {{ article.keywords_end }}</p>
+      </div>
+        {% if article.pages %}
+      <p class='way'>
+        <span class='bold'>Выходные данные:</span> {{ article.magazine_authors }} {{ article.magazine_title }} // Наука и время. {{ article.magazine.year }}. № {{ article.magazine.number }}. − С. {{ article.pages }} − URL:
+                        {{ article.make_url_to_remote }}
+      </p>
+        {% endif %}
+      <div class='work'>
+      <iframe src="{{ article.url }}" width="90%"></iframe>
+      </div>
+    </section>
+    <div class='change'>
+      <a class='prev' href="{{ article.get_prev.make_short_url }}">
+        <h4>ПРЕДЫДУЩАЯ СТАТЬЯ</h4>
+        <p>{{ article.get_prev.title }}</p>
+      </a>
+      <a class='next' href="{{ article.get_next.make_short_url }}">
+        <h4>СЛЕДУЮЩАЯ СТАТЬЯ</h4>
+        <p>{{ article.get_next.title }}</p>
+      </a>
+    </div>
+    <div class="image">
+    <section class="connect right">
+      <h2>Ждем ваших будущих публикаций</h2>
+      <form action="/feedback/" method="POST">
+          {% csrf_token %}
+        <p>Оставьте свой вопрос и мы ответим в ближайшее время!</p>
+        <input name="name" type="text" placeholder="Имя" required>
+        <textarea name="comment" id="" cols="30" rows="3" placeholder="Вопрос" required></textarea>
+        <input name="e-mail" type="email" placeholder="Ваш e-mail для ответа" required>
+        <button data-hover="Отправить запрос" type="button" class="green-button">Отправить запрос</button>
+          <script>
+              setTimeout(
+                  function(){
+                      document.querySelector("form button").type = "submit"
+                  }, 5000
+              )
+          </script>
+      </form>
+    </section>
+    </div>
+    <section class="green right"></section>
+    <section class="made-by right">
+      <a href="https://vk.com/polina9369" target="_blank" rel="noreferrer">Made by pinpol 2018</a>
+    </section>
+  </main>
+  <script src="/static/mobileMenu.js"></script>
+</body>
+</html>
